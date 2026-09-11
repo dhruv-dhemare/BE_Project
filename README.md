@@ -147,17 +147,16 @@ MOUTH_LANDMARK_INDICES = [
     308, 324, 318, 402, 317, 14, 87, 178, 88, 95
 ]
 ```
-
 ### Bounding Box Math & Consistency
-Given landmark pixel coordinates $\{(x_k, y_k)\}_{k=1}^{40}$:
 
-$$\text{min\_x} = \max(0, \min_k(x_k) - 20), \quad \text{max\_x} = \min(W_{\text{orig}}, \max_k(x_k) + 20)$$
+Given landmark pixel coordinates `{(x_k, y_k)} for k = 1 ... 40`:
 
-$$\text{min\_y} = \max(0, \min_k(y_k) - 20), \quad \text{max\_y} = \min(H_{\text{orig}}, \max_k(y_k) + 20)$$
+```text
+min_x = max(0, min(x_k) - 20)
+max_x = min(W_orig, max(x_k) + 20)
 
-If MediaPipe fails to detect a face on an isolated frame, the script skips the frame if the total skipped frames remain under `MAX_SKIP_RATIO = 0.10` (10%).
-
----
+min_y = max(0, min(y_k) - 20)
+max_y = min(H_orig, max(y_k) + 20)
 
 ## SECTION 6 — ALIGNMENT PROCESSING
 
